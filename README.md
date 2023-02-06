@@ -7,4 +7,4 @@ use this command to setup a n2n server:
 
 edit server port
 
-'sudo docker compose up -d'
+`sudo docker compose up -d`
