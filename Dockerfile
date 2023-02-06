@@ -7,11 +7,17 @@ RUN cd / \
     && apt-get update -y\
     && apt-get install -y openssl libssl-dev glibc-source build-essential autoconf git\
     && git clone https://github.com/ntop/n2n.git \
-    && cd n2n \ 
+    && cd n2n \
     && git checkout 3.1.1 \
     && ./autogen.sh \
     && ./configure \
     && make
 
 FROM ubuntu:22.04
+
+WORKDIR /n2n
+
 COPY --from=builder /n2n/supernode /usr/sbin/
+COPY entrypoint.sh /n2n
+
+ENTRYPOINT ["/n2n/entrypoint.sh"]
