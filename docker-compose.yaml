@@ -8,3 +8,4 @@ services:
       - 8080:8080/udp
     environment:
       - N2N_PORT=53386
+      - N2N_FD="QMSvDJTRJ" # Supernode Federation, use your own
